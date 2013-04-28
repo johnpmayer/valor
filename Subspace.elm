@@ -4,6 +4,8 @@ import Window
 import Graphics.Text as T
 --import Starfield
 
+import Modules
+
 import Random
 
 starTilesize = 1024
@@ -94,9 +96,15 @@ stepGame (Input t (UserInput ui)) (GameState gs) =
 
 background w h = filled black (rect w h) |> move 0 0 -- w/2 h/2
 
-ship vw vh angle =
-  sprite shipW shipH (0, 0) "ship2.png" |> rotate angle
-                                        |> scale 0.25
+ship vw vh angle = 
+  let ship = {
+    x = 0,
+    y = 0,
+    t = angle,
+    s = basicStructure }
+  in drawShip ship
+--  sprite shipW shipH (0, 0) "ship2.png" |> rotate angle
+--                                        |> scale 0.25
 
 whiteTextForm string =
   text . T.color white <| toText string
