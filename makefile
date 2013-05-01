@@ -1,4 +1,4 @@
-all: Subspace.html
+all: Subspace.html valor
 
 ELM_VERSION="0.8"
 
@@ -11,5 +11,9 @@ Subspace.html: elm-runtime.js *.elm
 test.html: elm-runtime.js *.elm
 	elm --make -r elm-runtime.js test.elm
 
+valor: *.go
+	go build
+
 clean:
-	rm -rf *.html *.js
+	rm -rf *.html *.js valor
+
